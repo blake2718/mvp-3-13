@@ -1,0 +1,12 @@
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mq-svc
+spec:
+  clusterIP: 10.96.0.11
+  selector:
+    app: mq-pod
+  ports:
+    - port: 1414

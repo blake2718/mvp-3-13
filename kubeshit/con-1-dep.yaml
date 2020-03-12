@@ -1,0 +1,23 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: con-1-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: con-1-pod
+  template:
+    metadata:
+      labels:
+        app: con-1-pod
+    spec:
+      containers:
+        - image: blake2718/con1-mvp-3-13
+          name: con-1-container
+          env: 
+            - name: QUEUE
+              value: COLOR.RED
+              

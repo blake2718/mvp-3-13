@@ -1,0 +1,4 @@
+frontend/.env
+.DS_Store
+kubeshit/all.yaml
+buildAndPush.sh

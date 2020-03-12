@@ -1,0 +1,14 @@
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mq-svc-2
+spec:
+  type: NodePort
+  selector:
+    app: mq-pod
+  ports:
+    - port: 9443
+      targetPort: 9443
+      nodePort: 30503

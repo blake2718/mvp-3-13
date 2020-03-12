@@ -1,0 +1,19 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: producer-pod
+  template:
+    metadata:
+      labels:
+        app: producer-pod
+    spec:
+      containers:
+        - image: blake2718/producer-mvp-3-13
+          name: producer-container

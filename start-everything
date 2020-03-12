@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# this script has no safety checks so if there's an error you have to watch for it
+
+minikube delete
+minikube start
+cd kubeshit/
+./aggregate.sh
+kubectl apply -f all.yaml
+cd ../frontend
+rm .env
+echo REACT_APP_MINIKUBE_IP=$(minikube ip) >> .env
+npm install
+
+MQ_POD=$(kubectl get pod | grep mq | awk '{print $1;}')
+MAX_WAIT=100
+
+for ((i=$MAX_WAIT ; i > 0 ; i--)); do
+	sleep 1
+	STATUS=$(kubectl get pod $MQ_POD | grep mq | awk '{print $3;}')
+	MESSAGE="${i}: MQ status is $STATUS"
+	if [[ "Running" == $STATUS ]]; then
+		START_LINE=$(kubectl logs $MQ_POD | grep 'Started web server')
+		if [[ "" != $START_LINE ]]; then
+			i=0
+			MESSAGE="${MESSAGE}, server started, opening dashboard."
+		else
+			MESSAGE="${MESSAGE}, server not started yet"
+		fi
+	fi
+	echo $MESSAGE
+done
+
+sleep 3
+open https://$(minikube ip):30503/
+echo opening web app
+npm start

@@ -1,0 +1,56 @@
+.send-content-area {
+  /* background-color: blue; */
+  height: 40%;
+  width: 75%;
+}
+
+.tag-section {
+  /* background-color: lightgreen; */
+  height: 15%;
+  display: flex;
+}
+
+
+
+.tag-selection-area {
+  /* background-color: blue; */
+  height: 15%;
+}
+
+.message-area {
+  background-color: #eeeeee;
+  height: 15%;
+  /* border: 1px solid black; */
+}
+
+.send-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-input {
+  display: flex;
+  height: 90%;
+  width: 95%;
+  background-color: transparent;
+  border: 0px solid;
+  justify-content: center;
+  font-size: 25px;
+  font-family: 'Bellota Text', cursive;
+  padding-left: 20px;
+}
+
+.send-icon-container {
+  display: flex;
+  height: 100%;
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.send-icon {
+  height: 75%;
+}

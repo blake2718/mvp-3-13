@@ -1,0 +1,11 @@
+.content-area {
+  /* background-color: blue; */
+  width: 75%;
+  height: 55%;
+}
+
+.tag-area {
+  /* background-color: lightgreen; */
+  height: 11%;
+  display: flex;
+}

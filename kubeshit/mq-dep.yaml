@@ -1,0 +1,19 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mq-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mq-pod
+  template:
+    metadata:
+      labels:
+        app: mq-pod
+    spec:
+      containers:
+        - image: blake2718/mq-mvp-3-13
+          name: mq-container
